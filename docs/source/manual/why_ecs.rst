@@ -29,6 +29,8 @@ Code showing the creation of two entities
     gameObject = Entity("root") 
     gameObject2 = Entity("gameObject2", "Group", 10)
 
+    #OR you can add them directly to your scene
+    myObject = scene.world.createEntity(Entity("Object"));
 
 Component
 ------------------------------
@@ -44,9 +46,8 @@ Code to add components into entities
 
 .. code-block:: python
     
-    gameComponent = BasicTransform("Transform", "TRS", 200)
-    gameComponent2 = BasicTransform()
-
+    transformComponent = BasicTransform(name="trans", trs=util.identity());    
+    scene.world.addComponent(myObject, transformComponent);
 
 The basic transform component. It holds data regarding the translation, rotation and scale matrix. The accept method is called from the
 systems when they visit BasicTransform component. It defines what each system will perform upon visiting the component.
